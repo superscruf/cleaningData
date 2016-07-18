@@ -24,3 +24,35 @@ descriptive names for the columns in the order in which they appear in the data 
 
 Finally, this script produces a "tidy" data set, which contains only the averages for each activity and test subject, and groups these
 average values by activity and subject. The tidy data set is exported to a separate file, tidyTable.csv, for reference.
+
+Variables:
+xTest
+yTest
+subjTest
+
+xTrain
+yTrain
+subjTrain
+
+The above 6 variables store the user generated data. 
+
+activityLabels
+myFeatures
+
+These two variables also store information from the original data set; however, these provide lookup tables that help cross reference terse number labels with meaningful descriptive text for all data in the set.
+
+xTestColCount
+yTestColCount
+training
+allData
+nColAllData
+
+These four variables store the results of computations and manipulations on the underlying data set. The two "TestColCount" variables are used to programatically assign values of the training and allData tables, based on the content of the data. If the content were to change at some point in the future, most of the work of keeping up with the changes is handled by the code; it is however incumbent on a human programmer to get in and make sure that any columns get descriptive text; the program will work without it, but the default naming convention makes it difficult to understand what is going on by simply looking at the data.
+
+nColAllData finds the number of columns in the allData table; we need this so we know where to start appending other columns when we need to, like the descriptive columns for activityID, activity, and subject. 
+
+meanAndStdDev
+This variable goes over the "features" file for it's first step, which is to collect only information whose column names include Means or Standard Deviations. To these data, I append the activityID and it's human-friendly counterpart activity, as well as the subject ID (there were 30 human test subjects participating in this study, so the subjects column stores values from 1 to 30).
+
+tidyTable
+This is the name of the final output table of tidy data. Each row is a single observation, each column is a single variable. All information is stored in a single dataset. These 3 criteria are the hallmarks of tidy data. When data are tidy, this allows programmers to safely make assumptions about the tools one can successfully apply against the data.
